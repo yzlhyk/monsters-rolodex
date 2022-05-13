@@ -25,38 +25,33 @@ class App extends Component {
 
   onSearchChange = (event) => {
     const searchField = event.target.value.toLocaleLowerCase();
-    this.setState(()=>{
-      return {searchField}
-    })
-
-  }
+    this.setState(() => {
+      return { searchField };
+    });
+  };
 
   render() {
-
-    console.log('render');
-
     const { monsters, searchField } = this.state;
     const { onSearchChange } = this;
 
     const filteredMonsters = monsters.filter((monster) => {
       return monster.name.toLocaleLowerCase().includes(searchField);
-    })
+    });
 
     return (
       <div className="App">
-          <input
-            className="search-box"
-            type="search"
-            placeholder="search monsters"
-            onChange={onSearchChange}
-          />
-          <CardList monsters={filteredMonsters}/>
+        <input
+          className="search-box"
+          type="search"
+          placeholder="search monsters"
+          onChange={onSearchChange}
+        />
+        <CardList monsters={filteredMonsters} />
 
-          {/* <span className="App-link">Learn React with typescript</span> */}
+        {/* <span className="App-link">Learn React with typescript</span> */}
       </div>
     );
   }
 }
 
 export default App;
-
